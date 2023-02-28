@@ -17,7 +17,6 @@ ______
 
 ### My Skills:
 <div align="center">
-  <a href="#"><img src="c++.svg" width="70px"/></a>
   <a href="#"><img src="java.svg" width="70px"/></a>
   <a href="#"><img src="python.svg" width="70px"/></a>
   <a href="#"><img src="git.svg" width="70px"/></a>
