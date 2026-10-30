@@ -1,12 +1,7 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./svg/top-dark.svg">
-  <img src="./svg/top-light.svg" width="100%" height="20">
-</picture>
-
 <p align="left">
-  <a href="https://t.me/ReverseEng1neer"><picture><source media="(prefers-color-scheme: dark)" srcset="./svg/link-tg-dark.svg"><img src="./svg/link-tg-light.svg" alt="Telegram" height="18"></picture></a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/pIat0n/BareMetal-RAM-Dumper"><picture><source media="(prefers-color-scheme: dark)" srcset="./svg/link-dumper-dark.svg"><img src="./svg/link-dumper-light.svg" alt="BareMetal-RAM-Dumper" height="18"></picture></a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/pIat0n?tab=repositories"><picture><source media="(prefers-color-scheme: dark)" srcset="./svg/link-repos-dark.svg"><img src="./svg/link-repos-light.svg" alt="Repositories" height="18"></picture></a>
+  <a href="https://t.me/ReverseEng1neer"><picture><source media="(prefers-color-scheme: dark)" srcset="./svg/link-tg-dark.svg"><img src="./svg/link-tg-light.svg" alt="Telegram" height="24"></picture></a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/pIat0n/BareMetal-RAM-Dumper"><picture><source media="(prefers-color-scheme: dark)" srcset="./svg/link-dumper-dark.svg"><img src="./svg/link-dumper-light.svg" alt="BareMetal-RAM-Dumper" height="24"></picture></a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/pIat0n?tab=repositories"><picture><source media="(prefers-color-scheme: dark)" srcset="./svg/link-repos-dark.svg"><img src="./svg/link-repos-light.svg" alt="Repositories" height="24"></picture></a>
 </p>
 
 <picture>
