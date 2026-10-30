@@ -12,7 +12,7 @@
 <a href="https://github.com/pIat0n/BareMetal-RAM-Dumper">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./svg/link-dumper-dark.svg">
-    <img src="./svg/link-dumper-light.svg" alt="BareMetal-RAM-Dumper" width="190" height="18" align="left">
+    <img src="./svg/link-dumper-light.svg" alt="BareMetal-RAM-Dumper" width="200" height="18" align="left">
   </picture>
 </a>
 <img src="data:null;," width="100%" height="0" align="left" alt="">
@@ -28,7 +28,7 @@
   <img src="./svg/main-light.svg" alt="pIat0n — Low-Level Systems & Security Research" width="100%" height="350" align="left">
 </picture>
 
-<img src="data:null;," width="100%" height="0" align="left" alt="">
+<br clear="all"/>
 
 ### Featured Work
 

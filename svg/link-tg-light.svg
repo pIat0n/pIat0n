@@ -13,15 +13,10 @@
         --color-hud-bg: rgba(246, 248, 250, 0.85);
         --color-hud-border: rgba(209, 217, 224, 0.8);
 
-        --default-delay: 0s;
-        --default-duration: 0.2s;
-        --default-stagger: 0.05s;
-
         --animate-in-menu-delay: 0.05s;
         --animate-in-links-delay: 0.1s;
-        --animate-in-copy-delay: 0.3s;
-        --animate-in-hud-delay: 1.8s;
-        --animate-in-graph-delay: 0.2s;
+        --animate-in-copy-delay: 0.25s;
+        --animate-in-hud-delay: 1.5s;
     }
 
     *, *::before, *::after {
@@ -73,6 +68,7 @@
         font-size: 13px;
         font-weight: 500;
         height: 18px;
+        white-space: nowrap;
         cursor: pointer;
     }
     .link__arrow {
