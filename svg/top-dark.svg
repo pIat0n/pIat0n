@@ -15,8 +15,8 @@
 
         --animate-in-menu-delay: 0.05s;
         --animate-in-links-delay: 0.1s;
-        --animate-in-copy-delay: 0.25s;
-        --animate-in-hud-delay: 1.5s;
+        --animate-in-copy-delay: 0.2s;
+        --animate-in-hud-delay: 1.4s;
     }
 
     *, *::before, *::after {
@@ -61,7 +61,7 @@
         100% { background-position: 0%; }
     }
     
-    .top-container {{
+    .top-container {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -70,27 +70,27 @@
         font-weight: 600;
         letter-spacing: -0.01em;
         position: relative;
-    }}
-    .status-badge {{
+    }
+    .status-badge {
         display: inline-flex;
         align-items: center;
         gap: 6px;
         font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
         font-size: 11px;
-    }}
-    .status-dot {{
+    }
+    .status-dot {
         width: 7px;
         height: 7px;
         border-radius: 50%;
         background-color: #2EA043;
         box-shadow: 0 0 8px #2EA043;
         animation: pulse-dot 2s ease-in-out infinite;
-    }}
-    @keyframes pulse-dot {{
-        0%, 100% {{ opacity: 1; transform: scale(1); }}
-        50% {{ opacity: 0.4; transform: scale(0.85); }}
-    }}
-    .gradient-border {{
+    }
+    @keyframes pulse-dot {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.85); }
+    }
+    .gradient-border {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -107,17 +107,17 @@
         );
         background-size: 200% 100%;
         animation: gradient-flow 6s linear infinite;
-    }}
-    @keyframes gradient-flow {{
-        0% {{ background-position: 0% 50%; }}
-        100% {{ background-position: 200% 50%; }}
-    }}
+    }
+    @keyframes gradient-flow {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 200% 50%; }
+    }
     </style>
             <div class="wrapper">
                 <div class="top-container">
                     <div class="status-badge fade-in" style="--delay: 0.1s;">
                         <span class="status-dot"></span>
-                        <span class="shine">pIat0n</span>
+                        <span class="shine">SECURITY RESEARCH</span>
                     </div>
                     <div class="fade-in" style="--delay: 0.25s; font-size: 11px; color: var(--color-sub); font-family: ui-monospace, monospace;">
                         RING-0 • BARE-METAL • REVERSING

@@ -1,34 +1,18 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./svg/top-dark.svg">
-  <img src="./svg/top-light.svg" width="100%" height="20" align="left">
-</picture>
-<a href="https://t.me/ReverseEng1neer">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./svg/link-tg-dark.svg">
-    <img src="./svg/link-tg-light.svg" alt="Telegram" width="100" height="18" align="left">
-  </picture>
-</a>
-<img src="data:null;," width="100%" height="0" align="left" alt="">
-<a href="https://github.com/pIat0n/BareMetal-RAM-Dumper">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./svg/link-dumper-dark.svg">
-    <img src="./svg/link-dumper-light.svg" alt="BareMetal-RAM-Dumper" width="200" height="18" align="left">
-  </picture>
-</a>
-<img src="data:null;," width="100%" height="0" align="left" alt="">
-<a href="https://github.com/pIat0n?tab=repositories">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./svg/link-repos-dark.svg">
-    <img src="./svg/link-repos-light.svg" alt="Repositories" width="115" height="18" align="left">
-  </picture>
-</a>
-<img src="data:null;," width="100%" height="0" align="left" alt="">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./svg/main-dark.svg">
-  <img src="./svg/main-light.svg" alt="pIat0n — Low-Level Systems & Security Research" width="100%" height="350" align="left">
+  <img src="./svg/top-light.svg" width="100%" height="20">
 </picture>
 
-<br clear="all"/>
+<p align="left">
+  <a href="https://t.me/ReverseEng1neer"><picture><source media="(prefers-color-scheme: dark)" srcset="./svg/link-tg-dark.svg"><img src="./svg/link-tg-light.svg" alt="Telegram" height="18"></picture></a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/pIat0n/BareMetal-RAM-Dumper"><picture><source media="(prefers-color-scheme: dark)" srcset="./svg/link-dumper-dark.svg"><img src="./svg/link-dumper-light.svg" alt="BareMetal-RAM-Dumper" height="18"></picture></a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/pIat0n?tab=repositories"><picture><source media="(prefers-color-scheme: dark)" srcset="./svg/link-repos-dark.svg"><img src="./svg/link-repos-light.svg" alt="Repositories" height="18"></picture></a>
+</p>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./svg/main-dark.svg">
+  <img src="./svg/main-light.svg" alt="Low-Level Systems & Security Research" width="100%" height="350">
+</picture>
 
 ### Featured Work
 

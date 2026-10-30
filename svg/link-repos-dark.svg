@@ -15,8 +15,8 @@
 
         --animate-in-menu-delay: 0.05s;
         --animate-in-links-delay: 0.1s;
-        --animate-in-copy-delay: 0.25s;
-        --animate-in-hud-delay: 1.5s;
+        --animate-in-copy-delay: 0.2s;
+        --animate-in-hud-delay: 1.4s;
     }
 
     *, *::before, *::after {
