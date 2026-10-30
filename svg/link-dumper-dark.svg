@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" width="190" height="18" data-theme="dark">
+    <foreignObject width="100%" height="100%">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <style>
+    :root {
+        --color-text: #58A6FF;
+        --color-sub: #8B949E;
+        --color-dot-bg-0: #161B22;
+        --color-dot-bg-1: #1F6FEB;
+        --color-dot-bg-2: #238636;
+        --color-dot-bg-3: #388BFD;
+        --color-dot-bg-4: #2EA043;
+        --color-hud-bg: rgba(22, 27, 34, 0.85);
+        --color-hud-border: rgba(48, 54, 61, 0.8);
+
+        --default-delay: 0s;
+        --default-duration: 0.2s;
+        --default-stagger: 0.05s;
+
+        --animate-in-menu-delay: 0.05s;
+        --animate-in-links-delay: 0.1s;
+        --animate-in-copy-delay: 0.3s;
+        --animate-in-hud-delay: 1.8s;
+        --animate-in-graph-delay: 0.2s;
+    }
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    .wrapper {
+        position: relative;
+        overflow: hidden;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+        color: var(--color-text);
+        width: 100%;
+        height: 100%;
+    }
+
+    .fade-in {
+        animation: fade-in 0.6s ease-out both;
+        animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes fade-in {
+        0% { opacity: 0; transform: translateY(2px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .shine {
+        background-color: var(--color-text);
+        background-image: linear-gradient(-75deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.4) 15%,
+            rgba(255, 255, 255, 0) 25%
+        );
+        background-size: 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 12s infinite;
+    }
+
+    @keyframes shine {
+        0% { background-position: 200%; }
+        10% { background-position: 0%; }
+        100% { background-position: 0%; }
+    }
+    
+    .link-container {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 13px;
+        font-weight: 500;
+        height: 18px;
+        cursor: pointer;
+    }
+    .link__arrow {
+        font-size: 11px;
+        display: inline-block;
+        animation: arrow-sway 4s ease-in-out infinite;
+    }
+    @keyframes arrow-sway {
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(1.5px, -1.5px); }
+    }
+    </style>
+            <div class="wrapper">
+                <div class="link-container fade-in" style="--delay: 0.15s;">
+                    <span class="shine">BareMetal-RAM-Dumper ★100+</span>
+                    <span class="link__arrow">↗</span>
+                </div>
+            </div>
+        </div>
+    </foreignObject>
+</svg>

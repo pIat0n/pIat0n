@@ -1,27 +1,41 @@
-<div align="right">
-  <a href="https://t.me/ReverseEng1neer"><code>telegram</code></a> &nbsp;•&nbsp;
-  <a href="https://github.com/pIat0n?tab=repositories"><code>repositories</code></a> &nbsp;•&nbsp;
-  <code>ring-0 / bare-metal</code>
-</div>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./svg/top-dark.svg">
+  <img src="./svg/top-light.svg" width="100%" height="20" align="left">
+</picture>
+<a href="https://t.me/ReverseEng1neer">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./svg/link-tg-dark.svg">
+    <img src="./svg/link-tg-light.svg" alt="Telegram" width="100" height="18" align="left">
+  </picture>
+</a>
+<img src="data:null;," width="100%" height="0" align="left" alt="">
+<a href="https://github.com/pIat0n/BareMetal-RAM-Dumper">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./svg/link-dumper-dark.svg">
+    <img src="./svg/link-dumper-light.svg" alt="BareMetal-RAM-Dumper" width="190" height="18" align="left">
+  </picture>
+</a>
+<img src="data:null;," width="100%" height="0" align="left" alt="">
+<a href="https://github.com/pIat0n?tab=repositories">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./svg/link-repos-dark.svg">
+    <img src="./svg/link-repos-light.svg" alt="Repositories" width="115" height="18" align="left">
+  </picture>
+</a>
+<img src="data:null;," width="100%" height="0" align="left" alt="">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./svg/main-dark.svg">
+  <img src="./svg/main-light.svg" alt="pIat0n — Low-Level Systems & Security Research" width="100%" height="350" align="left">
+</picture>
 
-# pIat0n
-
-> **Low-Level Software Engineer & Security Researcher**  
-> Deconstructing complex systems, reversing obfuscated binaries, and engineering automated tooling for AI-driven security workflows.
-
-```sh
-$ sysinfo --stack
-ASM (x86/ARM) • C/C++ • Python • Rust • IDA Pro • Frida • GDB • Linux & Android Internals
-```
+<img src="data:null;," width="100%" height="0" align="left" alt="">
 
 ### Featured Work
 
-| Project | Description | Stars / Tech |
-| :--- | :--- | :---: |
-| **[BareMetal-RAM-Dumper](https://github.com/pIat0n/BareMetal-RAM-Dumper)** | 16-bit real-mode x86 bootloader utility for physical memory dumping | `★ 100+` `ASM` |
-| **[telegram-mcp-server](https://github.com/pIat0n/telegram-mcp-server)** | Secure Model Context Protocol gateway with AES-256 encrypted memory | `Python` `MCP` |
-| **[CamReplace](https://github.com/pIat0n/CamReplace---Native-OBS-Virtual-Camera-Microphone-for-Rooted-Android-cameraserver-ptrace-hook-)** | Native OBS virtual camera/mic via Android `cameraserver` ptrace hooking | `C++` `Android` |
-| **[IDA-Strings-Decryptor](https://github.com/pIat0n/IDA-Plugin-Strings-decryptor-Anogs)** | Recovering obfuscated strings via dynamic ARM emulation (`MOVW`/`MOVT`) | `Python` `IDA` |
+- **[BareMetal-RAM-Dumper](https://github.com/pIat0n/BareMetal-RAM-Dumper)** `★ 100+` — 16-bit real-mode x86 bootloader for physical RAM dumping (Cold Boot attacks).
+- **[CamReplace](https://github.com/pIat0n/CamReplace---Native-OBS-Virtual-Camera-Microphone-for-Rooted-Android-cameraserver-ptrace-hook-)** — Android `cameraserver` ptrace hooking for virtual camera/mic streaming.
+- **[IDA-Plugin-Strings-decryptor](https://github.com/pIat0n/IDA-Plugin-Strings-decryptor-Anogs)** — Obfuscated string recovery via dynamic ARM instruction emulation (`MOVW`/`MOVT`).
+- **[smm-rw](https://github.com/pIat0n/smm-rw)** — Ring -2 UEFI System Management Mode memory read/write utility.
 
 <br>
 
