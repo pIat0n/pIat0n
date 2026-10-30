@@ -1,31 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" height="350" width="100%" data-theme="light">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" height="230" width="100%" data-theme="light">
     <foreignObject width="100%" height="100%">
         <div xmlns="http://www.w3.org/1999/xhtml">
             <style>
     :root {
         --color-text: #0969DA;
-        --color-sub: #57606A;
-        --color-dot-bg-0: #EBEDF0;
-        --color-dot-bg-1: #A7BEFB;
-        --color-dot-bg-2: #628BF9;
-        --color-dot-bg-3: #4071F7;
-        --color-dot-bg-4: #255DF6;
-        --color-hud-bg: rgba(246, 248, 250, 0.85);
-        --color-hud-border: rgba(209, 217, 224, 0.8);
-        --color-link-bg: rgba(240, 244, 250, 0.8);
-        --color-link-border: rgba(9, 105, 218, 0.3);
-        --color-stream: #0969DA;
-        --color-scanline: #0969DA;
-
-        --animate-in-links-delay: 0.1s;
         --animate-in-copy-delay: 0.2s;
-        --animate-in-hud-delay: 1.4s;
     }
-
     *, *::before, *::after {
         box-sizing: border-box;
     }
-
     .wrapper {
         position: relative;
         overflow: hidden;
@@ -33,183 +16,114 @@
         color: var(--color-text);
         width: 100%;
         height: 100%;
+        border-radius: 8px;
+        border: 1px solid rgba(209, 217, 224, 0.8);
+        background: rgba(255, 255, 255, 0.6);
     }
 
-    .fade-in {
-        animation: fade-in 0.6s ease-out both;
-        animation-delay: var(--delay, 0s);
-    }
-
-    @keyframes fade-in {
-        0% { opacity: 0; transform: translateY(2px); }
-        100% { opacity: 1; transform: translateY(0); }
-    }
-
-    .shine {
-        background-color: var(--color-text);
-        background-image: linear-gradient(-75deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.4) 15%,
-            rgba(255, 255, 255, 0) 25%
-        );
-        background-size: 200%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: shine 12s infinite;
-    }
-
-    @keyframes shine {
-        0% { background-position: 200%; }
-        10% { background-position: 0%; }
-        100% { background-position: 0%; }
-    }
-    
-    .main-box {
-        position: relative;
-        padding: 26px 24px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 350px;
-        box-sizing: border-box;
-    }
-    
-    /* Background Cyber Grid Layer */
-    .cyber-grid {
-        position: absolute;
-        inset: 0;
-        background-size: 32px 32px;
-        background-image: 
-            linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    /* Radar scanline sweeping down */
-    .radar-scanline {
+    /* IDA Navigation Band (Memory Map) */
+    .ida-nav-band {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent 5%, var(--color-scanline) 50%, transparent 95%);
-        box-shadow: 0 0 10px var(--color-scanline);
-        opacity: 0.35;
-        animation: radar-sweep 9s ease-in-out infinite;
-        pointer-events: none;
-        z-index: 1;
+        height: 3px;
+        display: flex;
+        z-index: 10;
     }
-    @keyframes radar-sweep {
-        0% { transform: translateY(0); opacity: 0; }
-        15% { opacity: 0.45; }
-        85% { opacity: 0.45; }
-        100% { transform: translateY(350px); opacity: 0; }
+    .seg-code  { background: #1f6feb; width: 55%; }
+    .seg-rdata { background: #238636; width: 18%; }
+    .seg-data  { background: #d29922; width: 12%; }
+    .seg-bss   { background: #a371f7; width: 8%; }
+    .seg-unexp { background: #30363d; width: 7%; }
+
+    /* IDA Graph Grid */
+    .ida-grid {
+        position: absolute;
+        inset: 0;
+        background-size: 28px 28px;
+        background-image: 
+            linear-gradient(to right, rgba(9, 105, 218, 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(9, 105, 218, 0.04) 1px, transparent 1px);
+        pointer-events: none;
+        z-index: 0;
     }
 
-    /* Low-level Assembly / Hex streams drifting */
-    .stream {
+    /* Faint Disassembly Watermarks */
+    .asm-bg {
         position: absolute;
         font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
         font-size: 11px;
-        letter-spacing: 0.06em;
-        color: var(--color-stream);
+        letter-spacing: 0.05em;
+        color: rgba(9, 105, 218, 0.12);
         pointer-events: none;
         user-select: none;
-        z-index: 0;
+        z-index: 1;
         white-space: nowrap;
     }
-    .stream--1 {
-        top: 25px;
-        right: 35px;
-        animation: stream-drift-1 14s linear infinite;
-    }
-    .stream--2 {
-        top: 130px;
-        right: 50px;
-        animation: stream-drift-2 18s linear infinite;
-    }
-    .stream--3 {
-        bottom: 95px;
-        left: 35px;
-        animation: stream-drift-3 16s linear infinite;
-    }
-    .stream--4 {
-        top: 70px;
-        left: 45%;
-        animation: stream-drift-4 20s linear infinite;
-    }
-    @keyframes stream-drift-1 {
-        0% { transform: translateY(0); opacity: 0; }
-        20% { opacity: 0.22; }
-        80% { opacity: 0.22; }
-        100% { transform: translateY(70px); opacity: 0; }
-    }
-    @keyframes stream-drift-2 {
-        0% { transform: translateY(0); opacity: 0; }
-        25% { opacity: 0.2; }
-        75% { opacity: 0.2; }
-        100% { transform: translateY(-60px); opacity: 0; }
-    }
-    @keyframes stream-drift-3 {
-        0% { transform: translateY(0); opacity: 0; }
-        20% { opacity: 0.18; }
-        80% { opacity: 0.18; }
-        100% { transform: translateY(50px); opacity: 0; }
-    }
-    @keyframes stream-drift-4 {
-        0% { transform: translateY(0); opacity: 0; }
-        25% { opacity: 0.16; }
-        75% { opacity: 0.16; }
-        100% { transform: translateY(-50px); opacity: 0; }
-    }
+    .asm-1 { top: 18px; right: 24px; }
+    .asm-2 { bottom: 18px; right: 30px; }
+    .asm-3 { bottom: 18px; left: 24px; }
 
-    /* Subtle background glow blobs */
-    .blob {
+    /* DVD Bouncing Screen Saver Animation for IDA Pro Icon */
+    .dvd-track-x {
         position: absolute;
-        border-radius: 50%;
-        filter: blur(60px);
-        opacity: 0.12;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         pointer-events: none;
-        z-index: 0;
+        z-index: 1;
     }
-    .blob--1 {
-        width: 280px;
-        height: 280px;
-        background: var(--color-dot-bg-1);
-        top: -40px;
-        right: -40px;
-        animation: morph-1 20s ease-in-out infinite;
+    .dvd-x {
+        position: absolute;
+        top: 0;
+        left: 8px;
+        animation: bounce-x 13.7s linear infinite alternate;
     }
-    .blob--2 {
-        width: 220px;
-        height: 220px;
-        background: var(--color-dot-bg-4);
-        bottom: -30px;
-        left: -30px;
-        animation: morph-2 24s ease-in-out infinite;
+    .dvd-y {
+        position: absolute;
+        top: 8px;
+        left: 0;
+        animation: bounce-y 7.9s linear infinite alternate;
     }
-    @keyframes morph-1 {
-        0%, 100% { transform: translate(0, 0) scale(1); }
-        50% { transform: translate(-25px, 20px) scale(1.08); }
-    }
-    @keyframes morph-2 {
-        0%, 100% { transform: translate(0, 0) scale(1); }
-        50% { transform: translate(25px, -15px) scale(1.06); }
+    .ida-icon {
+        width: 46px;
+        height: 46px;
+        opacity: 0.38;
+        display: block;
+        animation: dvd-glow 10s ease-in-out infinite alternate;
     }
 
-    .content-area {
+    @keyframes bounce-x {
+        0%   { left: 8px; }
+        100% { left: calc(100% - 54px); }
+    }
+    @keyframes bounce-y {
+        0%   { top: 8px; }
+        100% { top: calc(230px - 54px); }
+    }
+    @keyframes dvd-glow {
+        0%   { filter: drop-shadow(0 0 6px rgba(31, 111, 235, 0.4)); }
+        33%  { filter: drop-shadow(0 0 10px rgba(35, 134, 54, 0.5)); }
+        66%  { filter: drop-shadow(0 0 8px rgba(210, 153, 34, 0.45)); }
+        100% { filter: drop-shadow(0 0 10px rgba(163, 113, 247, 0.5)); }
+    }
+
+    /* Main Content Area */
+    .content-box {
         position: relative;
         z-index: 2;
+        padding: 34px 28px;
+        height: 230px;
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
+        align-items: center;
+        box-sizing: border-box;
     }
 
     .intro-paragraph {
-        font-size: 19px;
-        line-height: 1.6;
+        font-size: 19.5px;
+        line-height: 1.65;
         font-weight: 350;
         letter-spacing: -0.012em;
         margin: 0;
@@ -242,73 +156,43 @@
             opacity: 1 !important;
             animation: none !important;
         }
-    }
-
-    .hud-box {
-        background: var(--color-hud-bg);
-        border: 1px solid var(--color-hud-border);
-        border-radius: 8px;
-        padding: 13px 16px;
-        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-        font-size: 12px;
-        backdrop-filter: blur(8px);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    }
-    .hud-row {
-        display: flex;
-        align-items: baseline;
-        gap: 12px;
-        margin-bottom: 5px;
-    }
-    .hud-row:last-child {
-        margin-bottom: 0;
-    }
-    .hud-tag {
-        color: var(--color-text);
-        font-weight: 600;
-        letter-spacing: 0.05em;
-        min-width: 65px;
-        font-size: 11px;
-    }
-    .hud-desc {
-        color: var(--color-sub);
+        .dvd-x, .dvd-y {
+            animation: none !important;
+        }
     }
     </style>
             <div class="wrapper">
-                <div class="main-box">
-                    <div class="cyber-grid"></div>
-                    <div class="radar-scanline"></div>
+                <!-- IDA Pro Memory Segments Header -->
+                <div class="ida-nav-band">
+                    <div class="seg-code"></div>
+                    <div class="seg-rdata"></div>
+                    <div class="seg-data"></div>
+                    <div class="seg-bss"></div>
+                    <div class="seg-unexp"></div>
+                </div>
 
-                    <!-- Low-level opcode streams -->
-                    <div class="stream stream--1">0x7F 45 4C 46 (ELF_MAGIC)</div>
-                    <div class="stream stream--2">XOR EAX, EAX • RET</div>
-                    <div class="stream stream--3">SYS_PTRACE_ATTACH // [0xCC]</div>
-                    <div class="stream stream--4">MOV RAX, [RSP+0x08]</div>
+                <!-- IDA Graph Grid -->
+                <div class="ida-grid"></div>
 
-                    <!-- Ambient Glow -->
-                    <div class="blob blob--1"></div>
-                    <div class="blob blob--2"></div>
-                    
-                    <div class="content-area">
-                        <article class="intro-paragraph">
-                            <p><span class="char" style="--i: 0;">I</span><span class="char" style="--i: 1;">&apos;</span><span class="char" style="--i: 2;">m</span><span class="char" style="--i: 3;"> </span><span class="char" style="--i: 4;">P</span><span class="char" style="--i: 5;">l</span><span class="char" style="--i: 6;">a</span><span class="char" style="--i: 7;">t</span><span class="char" style="--i: 8;">o</span><span class="char" style="--i: 9;">n</span><span class="char" style="--i: 10;">,</span><span class="char" style="--i: 11;"> </span><span class="char" style="--i: 12;">a</span><span class="char" style="--i: 13;"> </span><span class="char" style="--i: 14;">l</span><span class="char" style="--i: 15;">o</span><span class="char" style="--i: 16;">w</span><span class="char" style="--i: 17;">-</span><span class="char" style="--i: 18;">l</span><span class="char" style="--i: 19;">e</span><span class="char" style="--i: 20;">v</span><span class="char" style="--i: 21;">e</span><span class="char" style="--i: 22;">l</span><span class="char" style="--i: 23;"> </span><span class="char" style="--i: 24;">s</span><span class="char" style="--i: 25;">y</span><span class="char" style="--i: 26;">s</span><span class="char" style="--i: 27;">t</span><span class="char" style="--i: 28;">e</span><span class="char" style="--i: 29;">m</span><span class="char" style="--i: 30;">s</span><span class="char" style="--i: 31;"> </span><span class="char" style="--i: 32;">e</span><span class="char" style="--i: 33;">n</span><span class="char" style="--i: 34;">g</span><span class="char" style="--i: 35;">i</span><span class="char" style="--i: 36;">n</span><span class="char" style="--i: 37;">e</span><span class="char" style="--i: 38;">e</span><span class="char" style="--i: 39;">r</span><span class="char" style="--i: 40;"> </span><span class="char" style="--i: 41;">a</span><span class="char" style="--i: 42;">n</span><span class="char" style="--i: 43;">d</span><span class="char" style="--i: 44;"> </span><span class="char" style="--i: 45;">s</span><span class="char" style="--i: 46;">e</span><span class="char" style="--i: 47;">c</span><span class="char" style="--i: 48;">u</span><span class="char" style="--i: 49;">r</span><span class="char" style="--i: 50;">i</span><span class="char" style="--i: 51;">t</span><span class="char" style="--i: 52;">y</span><span class="char" style="--i: 53;"> </span><span class="char" style="--i: 54;">r</span><span class="char" style="--i: 55;">e</span><span class="char" style="--i: 56;">s</span><span class="char" style="--i: 57;">e</span><span class="char" style="--i: 58;">a</span><span class="char" style="--i: 59;">r</span><span class="char" style="--i: 60;">c</span><span class="char" style="--i: 61;">h</span><span class="char" style="--i: 62;">e</span><span class="char" style="--i: 63;">r</span><span class="char" style="--i: 64;">.</span><span class="char" style="--i: 65;"> </span><span class="char" style="--i: 66;">M</span><span class="char" style="--i: 67;">y</span><span class="char" style="--i: 68;"> </span><span class="char" style="--i: 69;">w</span><span class="char" style="--i: 70;">o</span><span class="char" style="--i: 71;">r</span><span class="char" style="--i: 72;">k</span><span class="char" style="--i: 73;"> </span><span class="char" style="--i: 74;">r</span><span class="char" style="--i: 75;">e</span><span class="char" style="--i: 76;">v</span><span class="char" style="--i: 77;">o</span><span class="char" style="--i: 78;">l</span><span class="char" style="--i: 79;">v</span><span class="char" style="--i: 80;">e</span><span class="char" style="--i: 81;">s</span><span class="char" style="--i: 82;"> </span><span class="char" style="--i: 83;">a</span><span class="char" style="--i: 84;">r</span><span class="char" style="--i: 85;">o</span><span class="char" style="--i: 86;">u</span><span class="char" style="--i: 87;">n</span><span class="char" style="--i: 88;">d</span><span class="char" style="--i: 89;"> </span><span class="char" style="--i: 90;">d</span><span class="char" style="--i: 91;">e</span><span class="char" style="--i: 92;">c</span><span class="char" style="--i: 93;">o</span><span class="char" style="--i: 94;">n</span><span class="char" style="--i: 95;">s</span><span class="char" style="--i: 96;">t</span><span class="char" style="--i: 97;">r</span><span class="char" style="--i: 98;">u</span><span class="char" style="--i: 99;">c</span><span class="char" style="--i: 100;">t</span><span class="char" style="--i: 101;">i</span><span class="char" style="--i: 102;">n</span><span class="char" style="--i: 103;">g</span><span class="char" style="--i: 104;"> </span><span class="char" style="--i: 105;">c</span><span class="char" style="--i: 106;">o</span><span class="char" style="--i: 107;">m</span><span class="char" style="--i: 108;">p</span><span class="char" style="--i: 109;">l</span><span class="char" style="--i: 110;">e</span><span class="char" style="--i: 111;">x</span><span class="char" style="--i: 112;"> </span><span class="char" style="--i: 113;">s</span><span class="char" style="--i: 114;">o</span><span class="char" style="--i: 115;">f</span><span class="char" style="--i: 116;">t</span><span class="char" style="--i: 117;">w</span><span class="char" style="--i: 118;">a</span><span class="char" style="--i: 119;">r</span><span class="char" style="--i: 120;">e</span><span class="char" style="--i: 121;">,</span><span class="char" style="--i: 122;"> </span><span class="char" style="--i: 123;">r</span><span class="char" style="--i: 124;">e</span><span class="char" style="--i: 125;">v</span><span class="char" style="--i: 126;">e</span><span class="char" style="--i: 127;">r</span><span class="char" style="--i: 128;">s</span><span class="char" style="--i: 129;">i</span><span class="char" style="--i: 130;">n</span><span class="char" style="--i: 131;">g</span><span class="char" style="--i: 132;"> </span><span class="char" style="--i: 133;">o</span><span class="char" style="--i: 134;">b</span><span class="char" style="--i: 135;">f</span><span class="char" style="--i: 136;">u</span><span class="char" style="--i: 137;">s</span><span class="char" style="--i: 138;">c</span><span class="char" style="--i: 139;">a</span><span class="char" style="--i: 140;">t</span><span class="char" style="--i: 141;">e</span><span class="char" style="--i: 142;">d</span><span class="char" style="--i: 143;"> </span><span class="char" style="--i: 144;">b</span><span class="char" style="--i: 145;">i</span><span class="char" style="--i: 146;">n</span><span class="char" style="--i: 147;">a</span><span class="char" style="--i: 148;">r</span><span class="char" style="--i: 149;">i</span><span class="char" style="--i: 150;">e</span><span class="char" style="--i: 151;">s</span><span class="char" style="--i: 152;">,</span><span class="char" style="--i: 153;"> </span><span class="char" style="--i: 154;">a</span><span class="char" style="--i: 155;">n</span><span class="char" style="--i: 156;">d</span><span class="char" style="--i: 157;"> </span><span class="char" style="--i: 158;">p</span><span class="char" style="--i: 159;">r</span><span class="char" style="--i: 160;">o</span><span class="char" style="--i: 161;">b</span><span class="char" style="--i: 162;">i</span><span class="char" style="--i: 163;">n</span><span class="char" style="--i: 164;">g</span><span class="char" style="--i: 165;"> </span><span class="char" style="--i: 166;">b</span><span class="char" style="--i: 167;">a</span><span class="char" style="--i: 168;">r</span><span class="char" style="--i: 169;">e</span><span class="char" style="--i: 170;">-</span><span class="char" style="--i: 171;">m</span><span class="char" style="--i: 172;">e</span><span class="char" style="--i: 173;">t</span><span class="char" style="--i: 174;">a</span><span class="char" style="--i: 175;">l</span><span class="char" style="--i: 176;"> </span><span class="char" style="--i: 177;">&amp;</span><span class="char" style="--i: 178;"> </span><span class="char" style="--i: 179;">k</span><span class="char" style="--i: 180;">e</span><span class="char" style="--i: 181;">r</span><span class="char" style="--i: 182;">n</span><span class="char" style="--i: 183;">e</span><span class="char" style="--i: 184;">l</span><span class="char" style="--i: 185;"> </span><span class="char" style="--i: 186;">m</span><span class="char" style="--i: 187;">e</span><span class="char" style="--i: 188;">c</span><span class="char" style="--i: 189;">h</span><span class="char" style="--i: 190;">a</span><span class="char" style="--i: 191;">n</span><span class="char" style="--i: 192;">i</span><span class="char" style="--i: 193;">c</span><span class="char" style="--i: 194;">s</span><span class="char" style="--i: 195;"> </span><span class="char" style="--i: 196;">o</span><span class="char" style="--i: 197;">u</span><span class="char" style="--i: 198;">t</span><span class="char" style="--i: 199;">s</span><span class="char" style="--i: 200;">i</span><span class="char" style="--i: 201;">d</span><span class="char" style="--i: 202;">e</span><span class="char" style="--i: 203;"> </span><span class="char" style="--i: 204;">o</span><span class="char" style="--i: 205;">f</span><span class="char" style="--i: 206;"> </span><span class="char" style="--i: 207;">i</span><span class="char" style="--i: 208;">n</span><span class="char" style="--i: 209;">t</span><span class="char" style="--i: 210;">e</span><span class="char" style="--i: 211;">n</span><span class="char" style="--i: 212;">d</span><span class="char" style="--i: 213;">e</span><span class="char" style="--i: 214;">d</span><span class="char" style="--i: 215;"> </span><span class="char" style="--i: 216;">c</span><span class="char" style="--i: 217;">o</span><span class="char" style="--i: 218;">n</span><span class="char" style="--i: 219;">s</span><span class="char" style="--i: 220;">t</span><span class="char" style="--i: 221;">r</span><span class="char" style="--i: 222;">a</span><span class="char" style="--i: 223;">i</span><span class="char" style="--i: 224;">n</span><span class="char" style="--i: 225;">t</span><span class="char" style="--i: 226;">s</span><span class="char" style="--i: 227;">.</span><span class="cursor" style="--total-chars: 228;">|</span></p>
-                        </article>
+                <!-- Subtle IDA Disassembly Watermarks -->
+                <div class="asm-bg asm-1">.text:00401000 sub_401000 proc near</div>
+                <div class="asm-bg asm-2">call loc_4012A0 ; IDA Pro v9.2</div>
+                <div class="asm-bg asm-3">.text:00401020 retn</div>
 
-                        <div class="hud-box fade-in" style="--delay: var(--animate-in-hud-delay);">
-                            <div class="hud-row">
-                                <span class="hud-tag">STACK</span>
-                                <span class="hud-desc">ASM (x86/ARM) • C/C++ • Python • Rust • IDA Pro • Frida • GDB</span>
-                            </div>
-                            <div class="hud-row">
-                                <span class="hud-tag">SYSTEMS</span>
-                                <span class="hud-desc">Bare-Metal Bootloaders • Linux Kernel • Android Internals • Ring -2 (SMM)</span>
-                            </div>
-                            <div class="hud-row">
-                                <span class="hud-tag">RESEARCH</span>
-                                <span class="hud-desc">Binary Deobfuscation • Runtime Ptrace Hooking • Memory Forensics</span>
-                            </div>
+                <!-- Bouncing IDA Pro Icon (DVD Style) -->
+                <div class="dvd-track-x">
+                    <div class="dvd-x">
+                        <div class="dvd-y">
+                            <img class="ida-icon" src="data:image/png;base64,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" alt="IDA Pro" />
                         </div>
                     </div>
+                </div>
+
+                <!-- Main Bio Text -->
+                <div class="content-box">
+                    <article class="intro-paragraph">
+                        <p><span class="char" style="--i: 0;">I</span><span class="char" style="--i: 1;">&apos;</span><span class="char" style="--i: 2;">m</span><span class="char" style="--i: 3;"> </span><span class="char" style="--i: 4;">P</span><span class="char" style="--i: 5;">l</span><span class="char" style="--i: 6;">a</span><span class="char" style="--i: 7;">t</span><span class="char" style="--i: 8;">o</span><span class="char" style="--i: 9;">n</span><span class="char" style="--i: 10;">,</span><span class="char" style="--i: 11;"> </span><span class="char" style="--i: 12;">a</span><span class="char" style="--i: 13;"> </span><span class="char" style="--i: 14;">l</span><span class="char" style="--i: 15;">o</span><span class="char" style="--i: 16;">w</span><span class="char" style="--i: 17;">-</span><span class="char" style="--i: 18;">l</span><span class="char" style="--i: 19;">e</span><span class="char" style="--i: 20;">v</span><span class="char" style="--i: 21;">e</span><span class="char" style="--i: 22;">l</span><span class="char" style="--i: 23;"> </span><span class="char" style="--i: 24;">s</span><span class="char" style="--i: 25;">y</span><span class="char" style="--i: 26;">s</span><span class="char" style="--i: 27;">t</span><span class="char" style="--i: 28;">e</span><span class="char" style="--i: 29;">m</span><span class="char" style="--i: 30;">s</span><span class="char" style="--i: 31;"> </span><span class="char" style="--i: 32;">e</span><span class="char" style="--i: 33;">n</span><span class="char" style="--i: 34;">g</span><span class="char" style="--i: 35;">i</span><span class="char" style="--i: 36;">n</span><span class="char" style="--i: 37;">e</span><span class="char" style="--i: 38;">e</span><span class="char" style="--i: 39;">r</span><span class="char" style="--i: 40;"> </span><span class="char" style="--i: 41;">a</span><span class="char" style="--i: 42;">n</span><span class="char" style="--i: 43;">d</span><span class="char" style="--i: 44;"> </span><span class="char" style="--i: 45;">s</span><span class="char" style="--i: 46;">e</span><span class="char" style="--i: 47;">c</span><span class="char" style="--i: 48;">u</span><span class="char" style="--i: 49;">r</span><span class="char" style="--i: 50;">i</span><span class="char" style="--i: 51;">t</span><span class="char" style="--i: 52;">y</span><span class="char" style="--i: 53;"> </span><span class="char" style="--i: 54;">r</span><span class="char" style="--i: 55;">e</span><span class="char" style="--i: 56;">s</span><span class="char" style="--i: 57;">e</span><span class="char" style="--i: 58;">a</span><span class="char" style="--i: 59;">r</span><span class="char" style="--i: 60;">c</span><span class="char" style="--i: 61;">h</span><span class="char" style="--i: 62;">e</span><span class="char" style="--i: 63;">r</span><span class="char" style="--i: 64;">.</span><span class="char" style="--i: 65;"> </span><span class="char" style="--i: 66;">M</span><span class="char" style="--i: 67;">y</span><span class="char" style="--i: 68;"> </span><span class="char" style="--i: 69;">w</span><span class="char" style="--i: 70;">o</span><span class="char" style="--i: 71;">r</span><span class="char" style="--i: 72;">k</span><span class="char" style="--i: 73;"> </span><span class="char" style="--i: 74;">r</span><span class="char" style="--i: 75;">e</span><span class="char" style="--i: 76;">v</span><span class="char" style="--i: 77;">o</span><span class="char" style="--i: 78;">l</span><span class="char" style="--i: 79;">v</span><span class="char" style="--i: 80;">e</span><span class="char" style="--i: 81;">s</span><span class="char" style="--i: 82;"> </span><span class="char" style="--i: 83;">a</span><span class="char" style="--i: 84;">r</span><span class="char" style="--i: 85;">o</span><span class="char" style="--i: 86;">u</span><span class="char" style="--i: 87;">n</span><span class="char" style="--i: 88;">d</span><span class="char" style="--i: 89;"> </span><span class="char" style="--i: 90;">d</span><span class="char" style="--i: 91;">e</span><span class="char" style="--i: 92;">c</span><span class="char" style="--i: 93;">o</span><span class="char" style="--i: 94;">n</span><span class="char" style="--i: 95;">s</span><span class="char" style="--i: 96;">t</span><span class="char" style="--i: 97;">r</span><span class="char" style="--i: 98;">u</span><span class="char" style="--i: 99;">c</span><span class="char" style="--i: 100;">t</span><span class="char" style="--i: 101;">i</span><span class="char" style="--i: 102;">n</span><span class="char" style="--i: 103;">g</span><span class="char" style="--i: 104;"> </span><span class="char" style="--i: 105;">c</span><span class="char" style="--i: 106;">o</span><span class="char" style="--i: 107;">m</span><span class="char" style="--i: 108;">p</span><span class="char" style="--i: 109;">l</span><span class="char" style="--i: 110;">e</span><span class="char" style="--i: 111;">x</span><span class="char" style="--i: 112;"> </span><span class="char" style="--i: 113;">s</span><span class="char" style="--i: 114;">o</span><span class="char" style="--i: 115;">f</span><span class="char" style="--i: 116;">t</span><span class="char" style="--i: 117;">w</span><span class="char" style="--i: 118;">a</span><span class="char" style="--i: 119;">r</span><span class="char" style="--i: 120;">e</span><span class="char" style="--i: 121;">,</span><span class="char" style="--i: 122;"> </span><span class="char" style="--i: 123;">r</span><span class="char" style="--i: 124;">e</span><span class="char" style="--i: 125;">v</span><span class="char" style="--i: 126;">e</span><span class="char" style="--i: 127;">r</span><span class="char" style="--i: 128;">s</span><span class="char" style="--i: 129;">i</span><span class="char" style="--i: 130;">n</span><span class="char" style="--i: 131;">g</span><span class="char" style="--i: 132;"> </span><span class="char" style="--i: 133;">o</span><span class="char" style="--i: 134;">b</span><span class="char" style="--i: 135;">f</span><span class="char" style="--i: 136;">u</span><span class="char" style="--i: 137;">s</span><span class="char" style="--i: 138;">c</span><span class="char" style="--i: 139;">a</span><span class="char" style="--i: 140;">t</span><span class="char" style="--i: 141;">e</span><span class="char" style="--i: 142;">d</span><span class="char" style="--i: 143;"> </span><span class="char" style="--i: 144;">b</span><span class="char" style="--i: 145;">i</span><span class="char" style="--i: 146;">n</span><span class="char" style="--i: 147;">a</span><span class="char" style="--i: 148;">r</span><span class="char" style="--i: 149;">i</span><span class="char" style="--i: 150;">e</span><span class="char" style="--i: 151;">s</span><span class="char" style="--i: 152;">,</span><span class="char" style="--i: 153;"> </span><span class="char" style="--i: 154;">a</span><span class="char" style="--i: 155;">n</span><span class="char" style="--i: 156;">d</span><span class="char" style="--i: 157;"> </span><span class="char" style="--i: 158;">p</span><span class="char" style="--i: 159;">r</span><span class="char" style="--i: 160;">o</span><span class="char" style="--i: 161;">b</span><span class="char" style="--i: 162;">i</span><span class="char" style="--i: 163;">n</span><span class="char" style="--i: 164;">g</span><span class="char" style="--i: 165;"> </span><span class="char" style="--i: 166;">b</span><span class="char" style="--i: 167;">a</span><span class="char" style="--i: 168;">r</span><span class="char" style="--i: 169;">e</span><span class="char" style="--i: 170;">-</span><span class="char" style="--i: 171;">m</span><span class="char" style="--i: 172;">e</span><span class="char" style="--i: 173;">t</span><span class="char" style="--i: 174;">a</span><span class="char" style="--i: 175;">l</span><span class="char" style="--i: 176;"> </span><span class="char" style="--i: 177;">&amp;</span><span class="char" style="--i: 178;"> </span><span class="char" style="--i: 179;">k</span><span class="char" style="--i: 180;">e</span><span class="char" style="--i: 181;">r</span><span class="char" style="--i: 182;">n</span><span class="char" style="--i: 183;">e</span><span class="char" style="--i: 184;">l</span><span class="char" style="--i: 185;"> </span><span class="char" style="--i: 186;">m</span><span class="char" style="--i: 187;">e</span><span class="char" style="--i: 188;">c</span><span class="char" style="--i: 189;">h</span><span class="char" style="--i: 190;">a</span><span class="char" style="--i: 191;">n</span><span class="char" style="--i: 192;">i</span><span class="char" style="--i: 193;">c</span><span class="char" style="--i: 194;">s</span><span class="char" style="--i: 195;"> </span><span class="char" style="--i: 196;">o</span><span class="char" style="--i: 197;">u</span><span class="char" style="--i: 198;">t</span><span class="char" style="--i: 199;">s</span><span class="char" style="--i: 200;">i</span><span class="char" style="--i: 201;">d</span><span class="char" style="--i: 202;">e</span><span class="char" style="--i: 203;"> </span><span class="char" style="--i: 204;">o</span><span class="char" style="--i: 205;">f</span><span class="char" style="--i: 206;"> </span><span class="char" style="--i: 207;">i</span><span class="char" style="--i: 208;">n</span><span class="char" style="--i: 209;">t</span><span class="char" style="--i: 210;">e</span><span class="char" style="--i: 211;">n</span><span class="char" style="--i: 212;">d</span><span class="char" style="--i: 213;">e</span><span class="char" style="--i: 214;">d</span><span class="char" style="--i: 215;"> </span><span class="char" style="--i: 216;">c</span><span class="char" style="--i: 217;">o</span><span class="char" style="--i: 218;">n</span><span class="char" style="--i: 219;">s</span><span class="char" style="--i: 220;">t</span><span class="char" style="--i: 221;">r</span><span class="char" style="--i: 222;">a</span><span class="char" style="--i: 223;">i</span><span class="char" style="--i: 224;">n</span><span class="char" style="--i: 225;">t</span><span class="char" style="--i: 226;">s</span><span class="char" style="--i: 227;">.</span><span class="cursor" style="--total-chars: 228;">|</span></p>
+                    </article>
                 </div>
             </div>
         </div>
