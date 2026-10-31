@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./svg/ida-pro-dark.svg">
-  <img src="./svg/ida-pro-light.svg" alt="Low-Level Systems & Security Research" width="100%" height="260">
+  <source media="(prefers-color-scheme: dark)" srcset="./svg/ida-v3-dark.svg">
+  <img src="./svg/ida-v3-light.svg" alt="Low-Level Systems & Security Research" width="100%" height="260">
 </picture>
 
 <br>

@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="260" viewBox="0 0 800 260" data-theme="dark">
+  <defs>
+    <!-- Card Border Clip -->
+    <clipPath id="card-clip">
+      <rect width="800" height="260" rx="8" />
+    </clipPath>
+
+    <!-- Subtle Static Drop Shadow for IDA Icon -->
+    <filter id="ida-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00A0E9" flood-opacity="0.45" />
+    </filter>
+
+    <!-- Text Shadow for Contrast over Assembly -->
+    <filter id="text-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000000" flood-opacity="0.9" />
+    </filter>
+  </defs>
+
+  <!-- Card Frame (Clipped with rx=8) -->
+  <g clip-path="url(#card-clip)">
+    <!-- Base Background -->
+    <rect width="800" height="260" fill="#1e1e1e" stroke="#33373b" stroke-width="2" />
+
+    <!-- Pure Native SVG Disassembly Background (Zero DOM overhead) -->
+    <g font-family="Consolas, 'Liberation Mono', 'DejaVu Sans Mono', 'Courier New', monospace" font-size="11" opacity="0.26">
+    <text x="18" y="38">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE634</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">B.CC</tspan>
+      <tspan fill="#76b5c5" dx="18">loc_4AE5C0</tspan>
+    </text>
+    <text x="18" y="54">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE638</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">LDR</tspan>
+      <tspan fill="#76b5c5" dx="18">X19, [SP,#0x20+var_10]</tspan>
+    </text>
+    <text x="18" y="70">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE63C</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">LDP</tspan>
+      <tspan fill="#76b5c5" dx="18">X29, X30, [SP+0x20+var_20],#0x20</tspan>
+    </text>
+    <text x="18" y="86">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE640</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">RET</tspan>
+      <tspan fill="#76b5c5" dx="18">; CODE XREF: sub_4AE460+8</tspan>
+    </text>
+    <text x="18" y="102">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE644</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">; ==============</tspan>
+      <tspan fill="#76b5c5" dx="18">S U B R O U T I N E ==============</tspan>
+    </text>
+    <text x="18" y="118">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#0088cc" dx="8">.text:00000000004AE644</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">sub_4AE644:</tspan>
+      <tspan fill="#76b5c5" dx="18">proc near</tspan>
+    </text>
+    <text x="18" y="134">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE644</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">LDP</tspan>
+      <tspan fill="#76b5c5" dx="18">W8, W12, [X0]</tspan>
+    </text>
+    <text x="18" y="150">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE648</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">LDP</tspan>
+      <tspan fill="#76b5c5" dx="18">W9, W11, [X1]</tspan>
+    </text>
+    <text x="18" y="166">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE64C</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">MOV</tspan>
+      <tspan fill="#76b5c5" dx="18">W10, #0x100</tspan>
+    </text>
+    <text x="18" y="182">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE650</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">LDP</tspan>
+      <tspan fill="#76b5c5" dx="18">W13, W14, [X1,#8]</tspan>
+    </text>
+    <text x="18" y="198">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE654</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">ADD</tspan>
+      <tspan fill="#76b5c5" dx="18">W9, W8, W9</tspan>
+    </text>
+    <text x="18" y="214">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE658</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">ADRL</tspan>
+      <tspan fill="#76b5c5" dx="18">X8, dword_F2F50</tspan>
+    </text>
+    <text x="18" y="230">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE660</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">AND</tspan>
+      <tspan fill="#76b5c5" dx="18">W11, W9, #0xFF</tspan>
+    </text>
+    <text x="18" y="246">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE664</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">BFXIL</tspan>
+      <tspan fill="#76b5c5" dx="18">W10, W9, #8, #8</tspan>
+    </text>
+    <text x="18" y="262">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE668</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">EXTR</tspan>
+      <tspan fill="#76b5c5" dx="18">W1, W9, W9, #0x18</tspan>
+    </text>
+    <text x="18" y="278">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE66C</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">LDP</tspan>
+      <tspan fill="#76b5c5" dx="18">W15, W16, [X0,#8]</tspan>
+    </text>
+    <text x="18" y="294">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE670</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">LDR</tspan>
+      <tspan fill="#76b5c5" dx="18">W17, [X8,W17,UXTW#2]</tspan>
+    </text>
+    <text x="18" y="310">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE674</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">UBFX</tspan>
+      <tspan fill="#76b5c5" dx="18">W9, W9, #0x10, #8</tspan>
+    </text>
+    <text x="18" y="326">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE678</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">ADD</tspan>
+      <tspan fill="#76b5c5" dx="18">W11, W12, W11</tspan>
+    </text>
+    <text x="18" y="342">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE688</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">EOR</tspan>
+      <tspan fill="#76b5c5" dx="18">W11, W17, W11</tspan>
+    </text>
+    <text x="18" y="358">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE6B4</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">LDR</tspan>
+      <tspan fill="#76b5c5" dx="18">W13, [X8,W13,UXTW#2]</tspan>
+    </text>
+    <text x="18" y="374">
+      <tspan fill="#00A0E9" font-size="9">●</tspan>
+      <tspan fill="#556070" dx="8">.text:00000000004AE6C0</tspan>
+      <tspan fill="#c8d0dc" dx="14" font-weight="600">RET</tspan>
+      <tspan fill="#76b5c5" dx="18"></tspan>
+    </text>
+    </g>
+
+    <!-- 100% Mathematically Bounded Native SMIL DVD Bounce Animation (Zero Lag, Hardware Accelerated) -->
+    <!-- X: 16 to 740 (Logo 44x44, card 800). Max right = 740 + 44 = 784 (16px margin) -->
+    <!-- Y: 24 to 196 (Navbar 16px, card 260). Min Y = 24 (8px below navbar), Max Y = 196 + 44 = 240 (20px margin) -->
+    <g id="dvd-bouncer">
+      <animateTransform attributeName="transform" type="translate" additive="sum"
+        values="16 0; 740 0; 16 0" dur="13.7s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" additive="sum"
+        values="0 24; 0 196; 0 24" dur="8.1s" repeatCount="indefinite" />
+      <image href="data:image/png;base64,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" width="44" height="44" opacity="0.65" filter="url(#ida-glow)" />
+    </g>
+
+    <!-- Pure Native SVG Bio Text (IDA Monospace, Never Glitches, Crystal Clear) -->
+    <g font-family="Consolas, 'Liberation Mono', 'DejaVu Sans Mono', 'Courier New', monospace" font-size="18.5" font-weight="500" fill="#3fa3eb" filter="url(#text-shadow)">
+      <text x="36" y="92">I'm Platon, a low-level systems engineer and security researcher.</text>
+      <text x="36" y="124">My work revolves around deconstructing complex software, reversing</text>
+      <text x="36" y="156">obfuscated binaries, and probing bare-metal &amp; kernel mechanics</text>
+      <text x="36" y="188">outside of intended constraints.<tspan fill="#3fa3eb" font-weight="300">
+        <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />|</tspan></text>
+    </g>
+
+    <!-- Authentic IDA Pro Navigation Bar (Memory Map) - Native SVG on Top Layer -->
+    <g id="ida-navbar">
+      <rect x="0" y="0" width="800" height="16" fill="#1e1e1e" />
+      <rect x="0" y="0" width="38" height="16" fill="#00A0E9" />
+      <rect x="38" y="0" width="144" height="16" fill="#C88E00" />
+      <rect x="182" y="0" width="12" height="16" fill="#7A1F1D" />
+      <rect x="194" y="0" width="48" height="16" fill="#857C42" />
+      <rect x="242" y="0" width="256" height="16" fill="#C88E00" />
+      <rect x="498" y="0" width="56" height="16" fill="#857C42" />
+      <rect x="554" y="0" width="86" height="16" fill="#2D3139" />
+      <rect x="640" y="0" width="40" height="16" fill="#C000C0" />
+      <rect x="680" y="0" width="120" height="16" fill="#00A859" />
+      <!-- Golden Cursor Position Indicator -->
+      <rect x="360" y="0" width="22" height="16" fill="rgba(255, 215, 0, 0.3)" stroke="#FFD700" stroke-width="1.5" />
+      <line x1="0" y1="16" x2="800" y2="16" stroke="#000000" stroke-width="1.5" />
+    </g>
+  </g>
+</svg>
