@@ -97,8 +97,8 @@
     /* 100% Mathematically Bounded DVD Bouncing Animation */
     /* Container is exactly 800px x 260px */
     /* Logo is 44px x 44px */
-    /* X travel: 10px to (800 - 44 - 10) = 746px */
-    /* Y travel: 20px (4px below 16px navbar) to (260 - 44 - 8) = 208px */
+    /* X travel: 12px to 744px (12px padding on each side) */
+    /* Y travel: 22px (6px below navbar) to 206px (10px above bottom border) */
     .dvd-track {
         position: absolute;
         top: 0;
@@ -125,12 +125,12 @@
     }
 
     @keyframes bounce-x {
-        0%   { left: 10px; }
-        100% { left: 746px; }
+        0%   { left: 12px; }
+        100% { left: 744px; }
     }
     @keyframes bounce-y {
-        0%   { top: 20px; }
-        100% { top: 208px; }
+        0%   { top: 22px; }
+        100% { top: 206px; }
     }
 
     /* Main Foreground Content (Typewriter Bio) */
