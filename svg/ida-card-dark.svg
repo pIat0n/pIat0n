@@ -1,0 +1,346 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="260" viewBox="0 0 800 260" data-theme="dark">
+    <foreignObject x="0" y="0" width="800" height="260">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <style>
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+    .wrapper {
+        position: relative;
+        overflow: hidden;
+        font-family: Consolas, "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace;
+        color: #3fa3eb;
+        width: 100%;
+        height: 100%;
+        background: #1e1e1e;
+        border-radius: 8px;
+        border: 1.5px solid #33373b;
+    }
+
+    /* Authentic IDA Pro Navigation Bar (Memory Map) */
+    .ida-navbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 16px;
+        display: flex;
+        background: #1e1e1e;
+        border-bottom: 1.5px solid #000;
+        z-index: 20;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    }
+    .seg {
+        height: 100%;
+        display: inline-block;
+        flex-shrink: 0;
+    }
+    .seg-lib   { width: 4.8%; background: #00A0E9; } /* Cyan: Library function */
+    .seg-func1 { width: 18.0%; background: #C88E00; } /* Amber: Regular function */
+    .seg-insn1 { width: 1.5%; background: #7A1F1D; } /* Dark Red: Instruction */
+    .seg-data1 { width: 6.0%; background: #857C42; } /* Khaki: Data */
+    .seg-insn2 { width: 1.2%; background: #7A1F1D; } /* Dark Red: Instruction */
+    .seg-func2 { width: 32.0%; background: #C88E00; } /* Amber: Regular function */
+    .seg-data2 { width: 7.0%; background: #857C42; } /* Khaki: Data */
+    .seg-unexp { width: 12.0%; background: #2D3139; } /* Dark Gray: Unexplored */
+    .seg-ext   { width: 5.0%; background: #C000C0; } /* Magenta: External symbol */
+    .seg-lum   { width: 12.5%; background: #00A859; } /* Green: Lumina function */
+
+    .ida-nav-cursor {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 45%;
+        width: 22px;
+        border: 1.5px solid #FFD700;
+        background: rgba(255, 215, 0, 0.3);
+        box-shadow: 0 0 6px rgba(255, 215, 0, 0.7);
+        pointer-events: none;
+        box-sizing: border-box;
+    }
+
+    /* Authentic IDA Pro Disassembly Background */
+    .ida-asm-bg {
+        position: absolute;
+        top: 16px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 10px 18px;
+        font-family: Consolas, "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace;
+        font-size: 11px;
+        line-height: 1.45;
+        letter-spacing: 0.02em;
+        opacity: 0.26;
+        overflow: hidden;
+        user-select: none;
+        pointer-events: none;
+        z-index: 1;
+    }
+    .asm-row {
+        white-space: nowrap;
+        margin-bottom: 2px;
+    }
+    .asm-bullet {
+        color: #00A0E9;
+        font-size: 9px;
+    }
+
+    /* Single-Element DVD Screen Saver Bouncer: 0% Jitter, Mathematically Bounded */
+    .dvd-track {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 2;
+    }
+    .dvd-box {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        will-change: left, top;
+        animation: bounce-x 13.7s linear infinite alternate, bounce-y 8.1s linear infinite alternate;
+    }
+    .ida-icon {
+        width: 48px;
+        height: 48px;
+        display: block;
+        opacity: 0.6;
+        filter: drop-shadow(0 0 8px rgba(0, 160, 233, 0.45));
+    }
+
+    @keyframes bounce-x {
+        0%   { left: 10px; }
+        100% { left: calc(100% - 58px); }
+    }
+    @keyframes bounce-y {
+        0%   { top: 22px; }
+        100% { top: 202px; }
+    }
+
+    /* Main Foreground Content (Typewriter Bio) */
+    .content-box {
+        position: relative;
+        z-index: 5;
+        padding: 38px 28px 16px 28px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .intro-paragraph {
+        contain: layout paint;
+        font-family: Consolas, "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace;
+        font-size: 18.5px;
+        line-height: 1.6;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        margin: 0;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        color: #3fa3eb;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 10px rgba(10, 10, 10, 0.85);
+    }
+    .intro-paragraph span.char {
+        opacity: 0;
+        will-change: opacity;
+        animation: typewriter-char 0s forwards;
+        animation-delay: calc(0.15s + var(--i) * 14ms);
+    }
+    .cursor {
+        font-weight: 300;
+        color: #3fa3eb;
+        opacity: 0;
+        animation: blink-cursor 1s step-end infinite, typewriter-char 0s forwards;
+        animation-delay: calc(0.15s + var(--total-chars) * 14ms);
+    }
+    @keyframes typewriter-char {
+        to { opacity: 1; }
+    }
+    @keyframes blink-cursor {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .intro-paragraph span.char, .cursor {
+            opacity: 1 !important;
+            animation: none !important;
+        }
+        .dvd-box {
+            animation: none !important;
+        }
+    }
+    </style>
+            <div class="wrapper">
+                <!-- Authentic IDA Pro Navigation Bar (Memory Map) -->
+                <div class="ida-navbar">
+                    <div class="seg seg-lib"></div>
+                    <div class="seg seg-func1"></div>
+                    <div class="seg seg-insn1"></div>
+                    <div class="seg seg-data1"></div>
+                    <div class="seg seg-insn2"></div>
+                    <div class="seg seg-func2"></div>
+                    <div class="seg seg-data2"></div>
+                    <div class="seg seg-unexp"></div>
+                    <div class="seg seg-ext"></div>
+                    <div class="seg seg-lum"></div>
+                    <div class="ida-nav-cursor"></div>
+                </div>
+
+                <!-- Real ARM64 Assembly Listing covering background -->
+                <div class="ida-asm-bg">
+                    <div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE634</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">B.CC</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">loc_4AE5C0</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE638</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">LDR</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">X19, [SP,#0x20+var_10]</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE63C</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">LDP</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">X29, X30, [SP+0x20+var_20],#0x20</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE640</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">RET</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">; CODE XREF: sub_4AE460+8</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE644</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">; ==============</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">S U B R O U T I N E</span>&#160;&#160;
+            <span class="asm-extra">==============</span>
+        </div><div class="asm-row" style="color: #0088cc; font-weight: 600;">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE644</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">sub_4AE644:</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">proc near</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE644</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">LDP</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W8, W12, [X0]</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE648</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">LDP</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W9, W11, [X1]</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE64C</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">MOV</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W10, #0x100</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE650</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">LDP</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W13, W14, [X1,#8]</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE654</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">ADD</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W9, W8, W9</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE658</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">ADRL</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">X8, dword_F2F50</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE660</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">AND</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W11, W9, #0xFF</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE664</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">BFXIL</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W10, W9, #8, #8</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE668</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">EXTR</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W1, W9, W9, #0x18</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE66C</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">LDP</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W15, W16, [X0,#8]</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE670</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">LDR</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W17, [X8,W17,UXTW#2]</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE674</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">UBFX</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W9, W9, #0x10, #8</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE678</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">ADD</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W11, W12, W11</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE688</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">EOR</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W11, W17, W11</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE6B4</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">LDR</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;">W13, [X8,W13,UXTW#2]</span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div><div class="asm-row" style="">
+            <span class="asm-bullet">&#9679;</span>&#160;
+            <span class="asm-addr" style="color: #556070;">.text:00000000004AE6C0</span>&#160;&#160;
+            <span class="asm-mnem" style="color: #c8d0dc; font-weight: 600;">RET</span>&#160;&#160;&#160;&#160;
+            <span class="asm-ops" style="color: #76b5c5;"></span>&#160;&#160;
+            <span class="asm-extra"></span>
+        </div>
+                </div>
+
+                <!-- Bouncing IDA Pro Icon (Single-Element DVD Screensaver) -->
+                <div class="dvd-track">
+                    <div class="dvd-box">
+                        <img class="ida-icon" src="data:image/png;base64,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" alt="IDA Pro" />
+                    </div>
+                </div>
+
+                <!-- Main Bio Text in IDA Monospace Font -->
+                <div class="content-box">
+                    <article class="intro-paragraph">
+                        <p><span class="char" style="--i: 0;">I</span><span class="char" style="--i: 1;">&apos;</span><span class="char" style="--i: 2;">m</span><span class="char" style="--i: 3;"> </span><span class="char" style="--i: 4;">P</span><span class="char" style="--i: 5;">l</span><span class="char" style="--i: 6;">a</span><span class="char" style="--i: 7;">t</span><span class="char" style="--i: 8;">o</span><span class="char" style="--i: 9;">n</span><span class="char" style="--i: 10;">,</span><span class="char" style="--i: 11;"> </span><span class="char" style="--i: 12;">a</span><span class="char" style="--i: 13;"> </span><span class="char" style="--i: 14;">l</span><span class="char" style="--i: 15;">o</span><span class="char" style="--i: 16;">w</span><span class="char" style="--i: 17;">-</span><span class="char" style="--i: 18;">l</span><span class="char" style="--i: 19;">e</span><span class="char" style="--i: 20;">v</span><span class="char" style="--i: 21;">e</span><span class="char" style="--i: 22;">l</span><span class="char" style="--i: 23;"> </span><span class="char" style="--i: 24;">s</span><span class="char" style="--i: 25;">y</span><span class="char" style="--i: 26;">s</span><span class="char" style="--i: 27;">t</span><span class="char" style="--i: 28;">e</span><span class="char" style="--i: 29;">m</span><span class="char" style="--i: 30;">s</span><span class="char" style="--i: 31;"> </span><span class="char" style="--i: 32;">e</span><span class="char" style="--i: 33;">n</span><span class="char" style="--i: 34;">g</span><span class="char" style="--i: 35;">i</span><span class="char" style="--i: 36;">n</span><span class="char" style="--i: 37;">e</span><span class="char" style="--i: 38;">e</span><span class="char" style="--i: 39;">r</span><span class="char" style="--i: 40;"> </span><span class="char" style="--i: 41;">a</span><span class="char" style="--i: 42;">n</span><span class="char" style="--i: 43;">d</span><span class="char" style="--i: 44;"> </span><span class="char" style="--i: 45;">s</span><span class="char" style="--i: 46;">e</span><span class="char" style="--i: 47;">c</span><span class="char" style="--i: 48;">u</span><span class="char" style="--i: 49;">r</span><span class="char" style="--i: 50;">i</span><span class="char" style="--i: 51;">t</span><span class="char" style="--i: 52;">y</span><span class="char" style="--i: 53;"> </span><span class="char" style="--i: 54;">r</span><span class="char" style="--i: 55;">e</span><span class="char" style="--i: 56;">s</span><span class="char" style="--i: 57;">e</span><span class="char" style="--i: 58;">a</span><span class="char" style="--i: 59;">r</span><span class="char" style="--i: 60;">c</span><span class="char" style="--i: 61;">h</span><span class="char" style="--i: 62;">e</span><span class="char" style="--i: 63;">r</span><span class="char" style="--i: 64;">.</span><span class="char" style="--i: 65;"> </span><span class="char" style="--i: 66;">M</span><span class="char" style="--i: 67;">y</span><span class="char" style="--i: 68;"> </span><span class="char" style="--i: 69;">w</span><span class="char" style="--i: 70;">o</span><span class="char" style="--i: 71;">r</span><span class="char" style="--i: 72;">k</span><span class="char" style="--i: 73;"> </span><span class="char" style="--i: 74;">r</span><span class="char" style="--i: 75;">e</span><span class="char" style="--i: 76;">v</span><span class="char" style="--i: 77;">o</span><span class="char" style="--i: 78;">l</span><span class="char" style="--i: 79;">v</span><span class="char" style="--i: 80;">e</span><span class="char" style="--i: 81;">s</span><span class="char" style="--i: 82;"> </span><span class="char" style="--i: 83;">a</span><span class="char" style="--i: 84;">r</span><span class="char" style="--i: 85;">o</span><span class="char" style="--i: 86;">u</span><span class="char" style="--i: 87;">n</span><span class="char" style="--i: 88;">d</span><span class="char" style="--i: 89;"> </span><span class="char" style="--i: 90;">d</span><span class="char" style="--i: 91;">e</span><span class="char" style="--i: 92;">c</span><span class="char" style="--i: 93;">o</span><span class="char" style="--i: 94;">n</span><span class="char" style="--i: 95;">s</span><span class="char" style="--i: 96;">t</span><span class="char" style="--i: 97;">r</span><span class="char" style="--i: 98;">u</span><span class="char" style="--i: 99;">c</span><span class="char" style="--i: 100;">t</span><span class="char" style="--i: 101;">i</span><span class="char" style="--i: 102;">n</span><span class="char" style="--i: 103;">g</span><span class="char" style="--i: 104;"> </span><span class="char" style="--i: 105;">c</span><span class="char" style="--i: 106;">o</span><span class="char" style="--i: 107;">m</span><span class="char" style="--i: 108;">p</span><span class="char" style="--i: 109;">l</span><span class="char" style="--i: 110;">e</span><span class="char" style="--i: 111;">x</span><span class="char" style="--i: 112;"> </span><span class="char" style="--i: 113;">s</span><span class="char" style="--i: 114;">o</span><span class="char" style="--i: 115;">f</span><span class="char" style="--i: 116;">t</span><span class="char" style="--i: 117;">w</span><span class="char" style="--i: 118;">a</span><span class="char" style="--i: 119;">r</span><span class="char" style="--i: 120;">e</span><span class="char" style="--i: 121;">,</span><span class="char" style="--i: 122;"> </span><span class="char" style="--i: 123;">r</span><span class="char" style="--i: 124;">e</span><span class="char" style="--i: 125;">v</span><span class="char" style="--i: 126;">e</span><span class="char" style="--i: 127;">r</span><span class="char" style="--i: 128;">s</span><span class="char" style="--i: 129;">i</span><span class="char" style="--i: 130;">n</span><span class="char" style="--i: 131;">g</span><span class="char" style="--i: 132;"> </span><span class="char" style="--i: 133;">o</span><span class="char" style="--i: 134;">b</span><span class="char" style="--i: 135;">f</span><span class="char" style="--i: 136;">u</span><span class="char" style="--i: 137;">s</span><span class="char" style="--i: 138;">c</span><span class="char" style="--i: 139;">a</span><span class="char" style="--i: 140;">t</span><span class="char" style="--i: 141;">e</span><span class="char" style="--i: 142;">d</span><span class="char" style="--i: 143;"> </span><span class="char" style="--i: 144;">b</span><span class="char" style="--i: 145;">i</span><span class="char" style="--i: 146;">n</span><span class="char" style="--i: 147;">a</span><span class="char" style="--i: 148;">r</span><span class="char" style="--i: 149;">i</span><span class="char" style="--i: 150;">e</span><span class="char" style="--i: 151;">s</span><span class="char" style="--i: 152;">,</span><span class="char" style="--i: 153;"> </span><span class="char" style="--i: 154;">a</span><span class="char" style="--i: 155;">n</span><span class="char" style="--i: 156;">d</span><span class="char" style="--i: 157;"> </span><span class="char" style="--i: 158;">p</span><span class="char" style="--i: 159;">r</span><span class="char" style="--i: 160;">o</span><span class="char" style="--i: 161;">b</span><span class="char" style="--i: 162;">i</span><span class="char" style="--i: 163;">n</span><span class="char" style="--i: 164;">g</span><span class="char" style="--i: 165;"> </span><span class="char" style="--i: 166;">b</span><span class="char" style="--i: 167;">a</span><span class="char" style="--i: 168;">r</span><span class="char" style="--i: 169;">e</span><span class="char" style="--i: 170;">-</span><span class="char" style="--i: 171;">m</span><span class="char" style="--i: 172;">e</span><span class="char" style="--i: 173;">t</span><span class="char" style="--i: 174;">a</span><span class="char" style="--i: 175;">l</span><span class="char" style="--i: 176;"> </span><span class="char" style="--i: 177;">&amp;</span><span class="char" style="--i: 178;"> </span><span class="char" style="--i: 179;">k</span><span class="char" style="--i: 180;">e</span><span class="char" style="--i: 181;">r</span><span class="char" style="--i: 182;">n</span><span class="char" style="--i: 183;">e</span><span class="char" style="--i: 184;">l</span><span class="char" style="--i: 185;"> </span><span class="char" style="--i: 186;">m</span><span class="char" style="--i: 187;">e</span><span class="char" style="--i: 188;">c</span><span class="char" style="--i: 189;">h</span><span class="char" style="--i: 190;">a</span><span class="char" style="--i: 191;">n</span><span class="char" style="--i: 192;">i</span><span class="char" style="--i: 193;">c</span><span class="char" style="--i: 194;">s</span><span class="char" style="--i: 195;"> </span><span class="char" style="--i: 196;">o</span><span class="char" style="--i: 197;">u</span><span class="char" style="--i: 198;">t</span><span class="char" style="--i: 199;">s</span><span class="char" style="--i: 200;">i</span><span class="char" style="--i: 201;">d</span><span class="char" style="--i: 202;">e</span><span class="char" style="--i: 203;"> </span><span class="char" style="--i: 204;">o</span><span class="char" style="--i: 205;">f</span><span class="char" style="--i: 206;"> </span><span class="char" style="--i: 207;">i</span><span class="char" style="--i: 208;">n</span><span class="char" style="--i: 209;">t</span><span class="char" style="--i: 210;">e</span><span class="char" style="--i: 211;">n</span><span class="char" style="--i: 212;">d</span><span class="char" style="--i: 213;">e</span><span class="char" style="--i: 214;">d</span><span class="char" style="--i: 215;"> </span><span class="char" style="--i: 216;">c</span><span class="char" style="--i: 217;">o</span><span class="char" style="--i: 218;">n</span><span class="char" style="--i: 219;">s</span><span class="char" style="--i: 220;">t</span><span class="char" style="--i: 221;">r</span><span class="char" style="--i: 222;">a</span><span class="char" style="--i: 223;">i</span><span class="char" style="--i: 224;">n</span><span class="char" style="--i: 225;">t</span><span class="char" style="--i: 226;">s</span><span class="char" style="--i: 227;">.</span><span class="cursor" style="--total-chars: 228;">|</span></p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </foreignObject>
+</svg>
