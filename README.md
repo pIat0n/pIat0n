@@ -1,14 +1,14 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./svg/ida-v3-dark.svg">
-  <img src="./svg/ida-v3-light.svg" alt="Low-Level Systems & Security Research" width="100%" height="260">
-</picture>
-
-<br><br>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./svg/ida-v3-dark.svg">
+    <img src="./svg/ida-v3-light.svg" alt="Low-Level Systems & Security Research" width="800">
+  </picture>
+</p>
 
 <p align="center">
   <picture>
     <source type="image/webp" srcset="./assets/asm-art.webp">
-    <img src="./assets/asm-art.gif" alt="Creation of ASM" width="100%">
+    <img src="./assets/asm-art.gif" alt="Creation of ASM" width="800">
   </picture>
 </p>
 
