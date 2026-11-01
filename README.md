@@ -6,6 +6,13 @@
 <br>
 
 <p align="center">
+  <picture>
+    <source type="image/webp" srcset="./assets/asm-art.webp">
+    <img src="./assets/asm-art.gif" alt="Creation of ASM" width="100%">
+  </picture>
+</p>
+
+<p align="center">
   <a href="https://t.me/ReverseEng1neer">
     <img src="./svg/telegram.svg" width="18" height="18" alt="Telegram" valign="middle"/>
     &nbsp;<b>@ReverseEng1neer</b>
