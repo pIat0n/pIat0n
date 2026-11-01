@@ -3,7 +3,7 @@
   <img src="./svg/ida-v3-light.svg" alt="Low-Level Systems & Security Research" width="100%" height="260">
 </picture>
 
-<br>
+<br><br>
 
 <p align="center">
   <picture>
