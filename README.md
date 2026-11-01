@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://t.me/ReverseEng1neer">
-    <img src="./svg/telegram.svg" width="18" height="18" alt="Telegram" valign="middle"/>
+    <img src="./svg/telegram.svg" width="20" height="20" alt="Telegram" valign="middle"/>
     &nbsp;<b>@ReverseEng1neer</b>
   </a>
 </p>
